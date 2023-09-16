@@ -20,6 +20,8 @@ label1.grid(row=1, column=0, padx=10, pady=20)
 # Create an entry
 entry = ctk.CTkEntry(master=root, 
                     width=1000, 
+                    height=30,
+                    font=("Arial", 15),
                     placeholder_text="Enter the video URL",
                     corner_radius=10)
 entry.grid(row=2, column=0, padx=20, pady=1)
@@ -41,12 +43,14 @@ def button_callback():
         
 
 button = ctk.CTkButton(root, 
-                       text="Enter", 
-                       fg_color="#4681f4",
+                       text="Enter",
+                       font=("Arial", 15),
+                       text_color="#d5d7dd",
+                       fg_color="#5c6370",
                        command=button_callback,
                        width=100,
                        corner_radius=100,
-                       hover_color = "purple"
+                       hover_color="#2e3138"
                        )
 button.grid(row=3, column=0, padx=20, pady=20)
 
