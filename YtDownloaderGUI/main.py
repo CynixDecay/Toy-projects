@@ -26,14 +26,14 @@ entry = ctk.CTkEntry(master=root,
                     corner_radius=10)
 entry.grid(row=2, column=0, padx=20, pady=1)
 
-# Create a button
+# Create a button callback
 def button_callback():
     url = entry.get()
     yt = YouTube(url)
     stream = yt.streams.filter(file_extension='mp4').first()
     try:
         if stream is not None:
-            stream.download()
+            stream.download(output_path=entry2.get())
             label1.configure(text="Downloaded Successfully")
             button.destroy()
             entry.destroy()
@@ -41,7 +41,7 @@ def button_callback():
         print(e)
         label2 = ctk.CTkLabel(master=root, text="Error Occured")
         
-
+# Create a button
 button = ctk.CTkButton(root, 
                        text="Enter",
                        font=("Arial", 15),
@@ -52,8 +52,23 @@ button = ctk.CTkButton(root,
                        corner_radius=100,
                        hover_color="#2e3138"
                        )
-button.grid(row=3, column=0, padx=20, pady=20)
+button.grid(row=5, column=0, padx=20, pady=20)
 
+#Create a label for path
+label2 = ctk.CTkLabel(master=root, text="Download Path",
+                                font=("Arial", 20),
+                                width=120,
+                                height=25,
+                                corner_radius=8)
+label2.grid(row=3, column=0, padx=10, pady=20)
 
+# Create an entry for path
+entry2 = ctk.CTkEntry(master=root, 
+                    width=1000, 
+                    height=30,
+                    font=("Arial", 15),
+                    placeholder_text="Enter the path (Not mandatory)",
+                    corner_radius=10)  
+entry2.grid(row=4, column=0, padx=20, pady=1)
 
 root.mainloop()
